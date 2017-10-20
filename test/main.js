@@ -1,5 +1,6 @@
 const E2S	= require( "../" );
 const assert	= require( "assert" );
+const events	= require( "events" );
 
 describe( "Main", function( ){
 	it( "Is a function", function( ){
@@ -10,5 +11,28 @@ describe( "Main", function( ){
 		assert.throws( function( ){
 			const z = new E2S( );
 		} );
+	} );
+
+	it( "Fails if no event names are specified", function( ){
+		const _ee = new events.EventEmitter( );
+		assert.throws( function( ){
+			const z = new E2S( _ee );
+		} );
+	} );
+
+	it( "Can be started and stopped..", function( cb ){
+		const _ee = new events.EventEmitter( );
+		const _e2s = new E2S( _ee, "hey" );
+		_e2s.pause();
+		_e2s.on( "data", function( chunk ){
+			//console.log( "I have chunk of " );
+			//console.log( chunk );
+			_e2s.die( cb );
+		} );
+		setTimeout( function( ){
+			_e2s.resume();
+		}, 1000 );
+
+		_ee.emit( "hey", { "This": "is", data: 1 } );
 	} );
 } );
