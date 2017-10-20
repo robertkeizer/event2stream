@@ -20,13 +20,11 @@ describe( "Main", function( ){
 		} );
 	} );
 
-	it( "Can be started and stopped..", function( cb ){
+	it( "Emits data, and can be paused.", function( cb ){
 		const _ee = new events.EventEmitter( );
-		const _e2s = new E2S( _ee, "hey" );
+		const _e2s = new E2S( { eventEmitter: _ee, eventNames: [ "hey" ] } );
 		_e2s.pause();
 		_e2s.on( "data", function( chunk ){
-			//console.log( "I have chunk of " );
-			//console.log( chunk );
 			_e2s.die( cb );
 		} );
 		setTimeout( function( ){

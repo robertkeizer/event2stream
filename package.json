@@ -8,5 +8,8 @@
 	"devDependencies": {
 		"assert": "^1.4.1",
 		"mocha": "^4.0.1"
+	},
+	"dependencies": {
+		"joi": "^13.0.1"
 	}
 }
