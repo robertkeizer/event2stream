@@ -1,4 +1,12 @@
 {
 	"name": "event2stream",
-	"version": "0.0.1"
+	"version": "0.0.1",
+	"main": "lib/e2s.js",
+	"scripts": {
+		"test": "./node_modules/mocha/bin/mocha"
+	},
+	"devDependencies": {
+		"assert": "^1.4.1",
+		"mocha": "^4.0.1"
+	}
 }
