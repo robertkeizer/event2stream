@@ -10,7 +10,7 @@ The module was created to satify an easy way to test other modules that consume 
 
 ## Examples
 
-**Example**: Sample event to stream conversion. Demonstrates the `pause()` and `resume()` functionality.
+**Example**: Convert `log` events into a stream and connect the stream to stdout.
 ```js
 const events = require( "events" );
 const event2stream = require( "event2stream" );
@@ -18,7 +18,29 @@ const event2stream = require( "event2stream" );
 const myEventEmitter = new events.EventEmitter( );
 const eventStream = new event2stream( {
 	eventEmitter: myEventEmitter,
-	eventNames: [ "hey" ]
+	eventNames: [ "log" ]
+} );
+
+eventStream.pipe( process.stdout );
+
+myEventEmitter.emit( "log", "This is a log message." );
+myEventEmitter.emit( "log", "Another log message" );
+
+setTimeout( function( ){
+	eventStream.die();
+}, 1500 );
+```
+
+**Example**: Sample event to stream conversion using an object stream. Demonstrates the `pause()` and `resume()` functionality.
+```js
+const events = require( "events" );
+const event2stream = require( "event2stream" );
+
+const myEventEmitter = new events.EventEmitter( );
+const eventStream = new event2stream( {
+	eventEmitter: myEventEmitter,
+	eventNames: [ "hey" ],
+	mode: "object"
 } );
 
 eventStream.pause( );
