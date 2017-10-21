@@ -1,4 +1,7 @@
 # event2stream
+
+[![Travis CI](https://travis-ci.org/robertkeizer/event2stream.svg?branch=master)](https://travis-ci.org/robertkeizer/event2stream)
+
 A module that transforms an [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) into a [ReadableStream](https://nodejs.org/api/stream.html#stream_readable_streams).
 
 ## Examples
