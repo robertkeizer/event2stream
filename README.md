@@ -6,13 +6,13 @@ A module that transforms an [EventEmitter](https://nodejs.org/api/events.html#ev
 
 ## Examples
 
-**Example**: Sample event to stream conversion. Demonstrates the pause() and resume() functionality.
+**Example**: Sample event to stream conversion. Demonstrates the `pause()` and `resume()` functionality.
 ```js
 const events = require( "events" );
 const event2stream = require( "event2stream" );
 
-const myEventEmitter	= new events.EventEmitter( );
-const eventStream	= new event2stream( {
+const myEventEmitter = new events.EventEmitter( );
+const eventStream = new event2stream( {
 	eventEmitter: myEventEmitter,
 	eventNames: [ "hey" ]
 } );
