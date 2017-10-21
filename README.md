@@ -2,9 +2,11 @@
 
 # event2stream
 
-> Unless you're doing something specific with streams, you most likely don't want this package.
+## Overview
 
-A module that transforms an [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) into a [ReadableStream](https://nodejs.org/api/stream.html#stream_readable_streams).
+A module that transforms an [EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter) into a [ReadableStream](https://nodejs.org/api/stream.html#stream_readable_streams). Internally to the module this is accomplished by keeping a buffer in memory. Future releases will include the ability to use other forms of buffering.
+
+The module was created to satify an easy way to test other modules that consume readable streams. Rather than requiring the use of `fs.createReadStream` or similar, this module allows for any a custom readable stream to be implemented easily.
 
 ## Examples
 
