@@ -1,5 +1,7 @@
 {
 	"name": "event2stream",
+	"description": "A module that transforms an EventEmitter into a ReadableStream",
+	"tags": "stream event emitter eventemitter readablestream",
 	"version": "0.1.0",
 	"main": "lib/e2s.js",
 	"scripts": {
