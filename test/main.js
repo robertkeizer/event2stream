@@ -22,7 +22,7 @@ describe( "Main", function( ){
 
 	it( "Emits data, and can be paused.", function( cb ){
 		const _ee = new events.EventEmitter( );
-		const _e2s = new E2S( { eventEmitter: _ee, eventNames: [ "hey" ] } );
+		const _e2s = new E2S( { eventEmitter: _ee, eventNames: [ "hey" ], mode: "object" } );
 		_e2s.pause();
 		_e2s.on( "data", function( chunk ){
 			_e2s.die( cb );
@@ -36,7 +36,7 @@ describe( "Main", function( ){
 
 	it( "Handles string mode", function( cb ){
 		const _ee = new events.EventEmitter( );
-		const _e2s = new E2S( { eventEmitter: _ee, eventNames: [ "hey" ], mode: "string" } );
+		const _e2s = new E2S( { eventEmitter: _ee, eventNames: [ "hey" ] } );
 		_e2s.pause();
 
 		//_e2s.pipe( process.stdout );
