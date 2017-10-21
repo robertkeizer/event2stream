@@ -33,4 +33,22 @@ describe( "Main", function( ){
 
 		_ee.emit( "hey", { "This": "is", data: 1 } );
 	} );
+
+	it( "Handles string mode", function( cb ){
+		const _ee = new events.EventEmitter( );
+		const _e2s = new E2S( { eventEmitter: _ee, eventNames: [ "hey" ], mode: "string" } );
+		_e2s.pause();
+
+		//_e2s.pipe( process.stdout );
+
+		_e2s.on( "data", function( chunk ){
+			_e2s.die( cb );
+		} );
+		setTimeout( function( ){
+			_e2s.resume();
+		}, 1000 );
+
+		_ee.emit( "hey", "ahoy there" );
+	
+	} );
 } );
